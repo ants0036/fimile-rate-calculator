@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+# def calculate_size_multiplier(dimensions):
+
 # given a row of a data frame that has the distance in miles, calculate the payable weight of the package. 
 def calculate_payable_rate(row):
   # throw an error if it doesn't have distance in miles yet 
@@ -85,14 +87,17 @@ def calculate_payable_rate(row):
 
 @st.cache_data
 def load_zone_zips():
-  return pd.read_csv("data/Fimile-nj-zone-zips.csv", dtype={"Postal Code": str})
+  return pd.read_csv("data/Fimile-zone-zips.csv", dtype={"Postal Code": str})
 
 # takes in a row of a dataframe and returns the zone code 
 def find_zone_code(row):
   zone_zip_df = load_zone_zips()
   zone_df = zone_zip_df.loc[zone_zip_df["Postal Code"] == row["To Zipcode"], ["Zone"]]
   print(zone_df)
-  return zone_df.iloc[0]["Zone"]
+  if zone_df.empty:
+    return 0
+  else: 
+    return zone_df.iloc[0]["Zone"]
   
 # takes in a row of a dataframe that has a zone code
 def calculate_base_rate(row):

@@ -21,7 +21,7 @@ if packages_raw_csv is not None:
 # else, load data from test data to run the program 
 else:
   st.write("test data:")
-  testdata_df = pd.read_csv("data/testdata.csv", on_bad_lines="skip", encoding="utf-8-sig", dtype={"From Zipcode": str, "To Zipcode": str})
+  testdata_df = pd.read_csv("data/testdata2.csv", on_bad_lines="skip", encoding="utf-8-sig", dtype={"From Zipcode": str, "To Zipcode": str})
   st.write(testdata_df)
   add_distance_to_data(testdata_df)
   testdata_df ["payable_rate"] = testdata_df.apply(calculate_payable_rate, axis=1)
