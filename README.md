@@ -1,0 +1,1 @@
+This app uses the zipcode database from https://simplemaps.com/data/us-zips to calculate the distance between a package's starting zip code and destination zip code.
