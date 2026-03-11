@@ -82,3 +82,37 @@ def calculate_payable_rate(row):
       payable_rate = 120 * pallet_count * size_multiplier
   # add service charge 
   return payable_rate + 5
+
+@st.cache_data
+def load_zone_zips():
+  return pd.read_csv("data/Fimile-nj-zone-zips.csv", dtype={"Postal Code": str})
+
+# takes in a row of a dataframe and returns the zone code 
+def find_zone_code(row):
+  zone_zip_df = load_zone_zips()
+  zone_df = zone_zip_df.loc[zone_zip_df["Postal Code"] == row["To Zipcode"], ["Zone"]]
+  print(zone_df)
+  return zone_df.iloc[0]["Zone"]
+  
+# takes in a row of a dataframe that has a zone code
+def calculate_base_rate(row):
+  # taken from payable rate calculation -- need to abstract 
+  # given a format of num*num*num, split the string 
+  dimensions = [int(x) for x in row["Size (Inch)"].split("*")]
+  # calculate the size multiplier, never less than 1: calculation is based off of just length x width for some reason 
+  size_multiplier = (dimensions[0]*dimensions[1]) / (48 * 40)
+  if (size_multiplier < 1):
+    size_multiplier = 1 
+
+  pallet_count = row["Unit Count"]
+  base_rate = 0
+
+  if row["zone"] == "NJ-EDS-A":
+    base_rate = 70 * pallet_count * size_multiplier
+  else:
+    return "error: no valid zone"
+  
+  return base_rate
+
+def calculate_revenue (row):
+  return row["base_rate"]-row["payable_rate"]

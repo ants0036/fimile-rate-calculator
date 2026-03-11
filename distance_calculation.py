@@ -27,6 +27,7 @@ def calculate_zipcode_distance(sender_lat, sender_lon, receiver_lat, receiver_lo
 # takes in a zipcode and dataframe of all zip codes and returns a dataframe of the lat & longitude numbers
 def zip_to_lat_lon(zip, allzips_df):
   zip_lat_lon = allzips_df.loc[allzips_df["zip"] == zip, ["lat","lng"]]
+  print(zip_lat_lon)
   return zip_lat_lon
 
 # given a row of the package dataframe, compute the distance between the sender and reciever
@@ -35,7 +36,10 @@ def compute_distance(row):
     zip_lat_lon_sender = zip_to_lat_lon(row["From Zipcode"], allzips_df)
     zip_lat_lon_reciever = zip_to_lat_lon(row["To Zipcode"], allzips_df)
 
-    return calculate_zipcode_distance(zip_lat_lon_sender.iloc[0]["lat"], zip_lat_lon_sender.iloc[0]["lng"], zip_lat_lon_reciever.iloc[0]["lat"], zip_lat_lon_reciever.iloc[0]["lng"])
+    if zip_lat_lon_sender.empty or zip_lat_lon_reciever.empty:
+      return 0
+    else: 
+      return calculate_zipcode_distance(zip_lat_lon_sender.iloc[0]["lat"], zip_lat_lon_sender.iloc[0]["lng"], zip_lat_lon_reciever.iloc[0]["lat"], zip_lat_lon_reciever.iloc[0]["lng"])
 
 # takes in a dataframe with package info and adds a new column with the distance in miles
 def add_distance_to_data(packages_df):
