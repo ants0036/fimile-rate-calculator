@@ -1,7 +1,6 @@
 BOL#,#INV,填表人,区域,Status,Est Pickup Date,Est Delivery Date,Carrier,Week#,Order Date,Type,Customer,Shipper,"Shipper
 Contact",Fimile Shipping Notes,From Address,From City,From State,From Zipcode,Pickup Date,Pickup Delay,Receiver,"Receive
-Contact",To Address,To City,To State,To Zipcode,Delivery Date,Delivery Delay,"Unit
-Count","Handing
+Contact",To Address,To City,To State,To Zipcode,Delivery Date,Delivery Delay,"Unit Count","Handing
 Unit",Size (Inch),Weight (LBS),Commodity,Client Reference #,Additional service,Base Rate,Driver Wait Time,"Attempted
 Charge",Client Insurance Charge,Revenue,Payable,Carrier INV#,Carrier INV amount,Carrier INV Paid,"Fimile
 Coverage
@@ -10,3 +9,5 @@ Order ID",Insured Amount,Label / BOL Upload,POD Upload,INV#,Profit,Margin profit
 FM100100100,,william,,,11/13/2025,11/13/2025,TQL,46,11/13/2025,B2B,Awesung Inc,,,,3363 Gun Club Rd,Nazareth,PA,18064,,0,,,117 Interstate Blvd,Monroe,NJ,08831,,0,8,PLT,48*40*75,,,7412584526,None,,,,,$0.00,,,,FALSE,,,,,,,$0.00,0.00%,,48,40,No,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 FMFMJZGQXOUS1-01,,william,EAST,5 - Problem solving,,,Final Mile Express,52,,,WYD-email,NJJW04,,DONBYY66-260104-0029,"99 Callahan Blvd, Building #2",Parlin,NJ,08859,,0,Laura Avila,,"4243 South Broad
 Street,",Trenton,NJ,08620,,0,1,PLT,69*45*32,557LBS,,DONBYY66-260104-0029,None,,,,,$0.00,,,,FALSE,,,,,,,$0.00,0.00%,,69,45,No,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FMFMJZGQXOUS1-01,,william,EAST,5 - Problem solving,,,Final Mile Express,52,,,WYD-email,NJJW04,,DONBYY66-260104-0029,"99 Callahan Blvd, Building #2",Parlin,NJ,08859,,0,Laura Avila,,"4243 South Broad
+Street,",Bronx,NJ,08620,,0,1,PLT,69*45*32,557LBS,,DONBYY66-260104-0029,None,,,,,$0.00,,,,FALSE,,,,,,,$0.00,0.00%,,69,45,No,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

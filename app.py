@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from distance_calculation import * 
+from payable_rate_calculation import * 
 
 # file uploader module - converts a csv to a dataframe 
 packages_raw_csv = st.file_uploader("choose a csv")
@@ -15,5 +16,6 @@ else:
   testdata_df = pd.read_csv("data/testdata.csv", on_bad_lines="skip", encoding="utf-8-sig", dtype={"From Zipcode": str, "To Zipcode": str})
   st.write(testdata_df)
   add_distance_to_data(testdata_df)
-  st.write("test data with miles calculation:")
+  testdata_df ["payable_rate"] = testdata_df.apply(calculate_payable_rate, axis=1)
+  st.write("test data with payable rate calculation:")
   st.write(testdata_df)
