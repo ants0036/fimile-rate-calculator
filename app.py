@@ -9,6 +9,7 @@ def process_df(df):
   df ["payable_rate"] = df.apply(calculate_payable_rate, axis=1)
   df ["zone"] = df.apply(find_zone_code, axis=1)
   df ["base_rate"] = df.apply(calculate_base_rate, axis=1)
+  df ["base_rate"] = pd.to_numeric(df["base_rate"], errors="coerce")
   df ["revenue"] = df.apply(calculate_revenue, axis=1)
   return df 
 
