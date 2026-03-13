@@ -14,6 +14,8 @@ def process_df(df):
 
 # file uploader module - converts a csv to a dataframe 
 packages_raw_csv = st.file_uploader("choose a csv")
+st.write("Excel Formatting: Zipcodes need to have leading 0s ex. 08844, not 8844")
+st.write("Excel Formatting: Size needs to be in l\*w\*h format, not lxwxh")
 # if file is uploaded to the module 
 if packages_raw_csv is not None:
   packages_raw_df = pd.read_csv(packages_raw_csv, on_bad_lines="skip", encoding="utf-8-sig", dtype={"From Zipcode": str, "To Zipcode": str})
@@ -21,6 +23,7 @@ if packages_raw_csv is not None:
   st.write("excel data:")
   st.write(packages_raw_df)
   result_df = process_df(packages_raw_df)
+  st.write("after calculating:")
   st.write(result_df)
   csv = result_df.to_csv(index=False)
   st.download_button(
@@ -35,6 +38,7 @@ else:
   testdata_df = pd.read_csv("data/testdata2.csv", on_bad_lines="skip", encoding="utf-8-sig", dtype={"From Zipcode": str, "To Zipcode": str})
   st.write(testdata_df)
   result_df = process_df(testdata_df)
+  st.write("after calculating:")
   st.write(result_df)
   csv = result_df.to_csv(index=False)
   st.download_button(
