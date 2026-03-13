@@ -130,12 +130,14 @@ def calculate_base_rate(row):
   print ("base rate", row.name)
   print ("size multiplier", size_multiplier)
 
-  if row["zone"] == "NJ-EDS-A":
+  if row["zone"] == "NJ-EDS-A" or row["zone"] == "CA-ONT-A" or row["zone"] == "CA-ONT-B" or row["zone"] == "CA-ONT-C" or row["zone"] == "TX-DLS-A":
     base_rate = 70 * pallet_count * size_multiplier
-  elif row["zone"] == "NJ-EDS-B":
+  elif row["zone"] == "NJ-EDS-B" or row["zone"] == "TX-HOU-B":
     base_rate = 110 * pallet_count * size_multiplier
   elif row["zone"] == "NJ-EDS-C":
     base_rate = 150 * pallet_count * size_multiplier  
+  elif row["zone"] == "NJ-EDS-C":
+    base_rate = 150 * pallet_count * size_multiplier 
   else:
     return "error: no valid zone"
   
